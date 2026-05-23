@@ -464,6 +464,18 @@ a {
   max-width: 720px;
 }
 
+.status-note {
+  color: #34413d;
+  font-weight: 700;
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: flex-end;
+}
+
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -531,6 +543,10 @@ a {
   .status {
     align-items: start;
   }
+
+  .status-actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 620px) {
@@ -547,7 +563,8 @@ a {
   }
 
   .hero-actions,
-  .button {
+  .button,
+  .status-actions {
     width: 100%;
   }
 
