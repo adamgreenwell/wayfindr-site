@@ -427,6 +427,16 @@ a {
   color: #ffffff;
 }
 
+.tenet {
+  border-left: 4px solid var(--sun);
+  color: rgb(255 255 255 / 82%);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.55;
+  margin: 1.65rem 0 0;
+  padding-left: 1rem;
+}
+
 .service-rows {
   display: grid;
 }
