@@ -352,6 +352,7 @@ a {
 
 .principles,
 .sustainability,
+.releases,
 .status,
 .site-footer {
   margin: 0 auto;
@@ -463,6 +464,93 @@ a {
   margin: 0.35rem 0 0;
 }
 
+.releases {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.text-link {
+  border-bottom: 2px solid var(--teal);
+  color: var(--teal-dark);
+  font-weight: 800;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  background: var(--mint);
+}
+
+.release-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.release-list li {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  padding: 1.4rem 0;
+}
+
+.release-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.release-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.release-version {
+  color: var(--teal-dark);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+}
+
+.release-version:hover,
+.release-version:focus-visible {
+  text-decoration: underline;
+}
+
+.release-meta time {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.release-body h3 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.release-body p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0.45rem 0 0;
+}
+
+.release-body code {
+  background: var(--mint);
+  border-radius: 4px;
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+}
+
+.release-patches {
+  border-left: 2px solid var(--line);
+  font-size: 0.95rem;
+  padding-left: 0.9rem;
+}
+
 .status {
   align-items: end;
   display: grid;
@@ -542,6 +630,7 @@ a {
 
   .principles,
   .sustainability,
+  .releases,
   .status {
     grid-template-columns: 1fr;
   }
@@ -580,6 +669,17 @@ a {
 
   .support-grid {
     grid-template-columns: 1fr;
+  }
+
+  .release-list li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .release-meta {
+    align-items: baseline;
+    flex-direction: row;
+    gap: 0.7rem;
   }
 
   .chat-pane {
