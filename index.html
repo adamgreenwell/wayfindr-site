@@ -34,6 +34,7 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#principles">Principles</a>
         <a href="#sustainability">Sustainability</a>
+        <a href="#releases">Releases</a>
         <a href="#status">Status</a>
         <a href="https://github.com/adamgreenwell/wayfindr" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -147,17 +148,147 @@
         </div>
       </section>
 
+      <section class="releases" id="releases" aria-labelledby="releases-title">
+        <div class="section-copy">
+          <h2 id="releases-title">Every release says what it needs from you.</h2>
+          <p>
+            Wayfindr is self-hosted, so the only question that matters at
+            upgrade time is whether the upgrade is safe to take unattended.
+            Every release answers that before it says anything else.
+          </p>
+          <p>
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/main/CHANGELOG.md" target="_blank" rel="noreferrer">
+              Read the full changelog
+            </a>
+          </p>
+        </div>
+
+        <ol class="release-list" aria-label="Wayfindr release timeline">
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.6.0" target="_blank" rel="noreferrer">0.6.0</a>
+              <time datetime="2026-08-21">21 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>The interface renovation</h3>
+              <p>
+                The dashboard was rebuilt around a permanent sidebar, a colour
+                per site, queues about four times denser, and a dark mode the
+                widget follows too. Same application wearing a different face:
+                data, URLs, and the install snippet on your pages are untouched.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.5.0" target="_blank" rel="noreferrer">0.5.0</a>
+              <time datetime="2026-08-18">18 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Sites get a lifecycle</h3>
+              <p>
+                A site can now be renamed, archived when you stop supporting it,
+                or permanently deleted. Archiving destroys nothing and is
+                reversible; deletion has to be archived first, done by an owner,
+                and confirmed by typing the site's name.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.4.0" target="_blank" rel="noreferrer">0.4.0</a>
+              <time datetime="2026-08-14">14 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Install anywhere, not just on a public domain</h3>
+              <p>
+                <code>localhost</code>, bare IP addresses, and internal hostnames
+                became supported install targets, with a certificate issued
+                locally instead of an ACME challenge that could only fail.
+              </p>
+              <p class="release-patches">
+                Followed by 0.4.1 &ndash; 0.4.4, which fixed the TLS handshake
+                for installs at an IP address and moved the widget's last
+                third-party dependency in-tree, so a self-hosted install now
+                serves every byte it runs.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.3.0" target="_blank" rel="noreferrer">0.3.0</a>
+              <time datetime="2026-08-11">11 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Advice that does not block the upgrade</h3>
+              <p>
+                Releases can carry advisory notices &mdash; worth telling an
+                operator, not worth stopping for &mdash; and they disappear on
+                their own once the thing is done. Where the install genuinely
+                cannot check, it says so rather than guessing.
+              </p>
+              <p class="release-patches">
+                Followed by 0.3.1 and 0.3.2, which cleared Composer advisories
+                and fixed a first-boot race on empty storage volumes.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.2.0" target="_blank" rel="noreferrer">0.2.0</a>
+              <time datetime="2026-08-10">10 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>The upgrade guard, exercised</h3>
+              <p>
+                The first release you could upgrade to across a release boundary
+                with a manifest on both sides. It deliberately demands nothing:
+                the point was to prove the mechanism on a release where being
+                wrong cost nothing.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.1.0" target="_blank" rel="noreferrer">0.1.0</a>
+              <time datetime="2026-08-05">5 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>The first stable release</h3>
+              <p>
+                Mail, attachment storage, malware scanning and backups became
+                things you configure in a browser rather than in a file, behind
+                a guided first-run checklist. Backup and restore shipped with an
+                optional offsite mirror, and a release learned how to state what
+                an operator must do before it will migrate or serve.
+              </p>
+              <p class="release-patches">
+                Preceded by the <code>0.1.0-alpha.1</code> &ndash;
+                <code>alpha.3</code> prereleases on 21 and 22 July 2026, the
+                first Wayfindr builds published as installable artifacts.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
       <section class="status" id="status" aria-labelledby="status-title">
         <div>
-          <h2 id="status-title">Pre-alpha and building in public.</h2>
+          <h2 id="status-title">Early, in the open, and genuinely installable.</h2>
           <p>
-            Wayfindr is early. The first milestone is a focused support loop:
-            install the widget, identify a visitor, chat with an agent, request
-            cobrowsing consent, and turn the session into a durable ticket.
+            Wayfindr is young &mdash; six releases since August &mdash; but it is
+            not a demo. You can self-host it today, and the support loop it was
+            built around works end to end: install the widget, chat with a
+            visitor, request cobrowsing consent, and turn the session into a
+            ticket.
           </p>
           <p class="status-note">
-            Stay tuned as the alpha takes shape, or fork the repo now if you
-            want to follow along, experiment, or help steer the thing.
+            Expect things to move. Nothing here is frozen yet.
           </p>
         </div>
         <div class="status-actions" aria-label="Wayfindr project links">
