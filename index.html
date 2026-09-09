@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Wayfindr is an open-source, self-hostable support platform for live chat, consent-based cobrowsing, and tickets."
+      content="Wayfindr is an open-source, self-hostable support platform for live chat, email, consent-based cobrowsing, a searchable help centre, and tickets."
     />
     <meta property="og:title" content="Wayfindr - One platform. For everyone." />
     <meta
@@ -34,7 +34,9 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#principles">Principles</a>
         <a href="#sustainability">Sustainability</a>
+        <a href="#features">Features</a>
         <a href="#releases">Releases</a>
+        <a href="#roadmap">Roadmap</a>
         <a href="#status">Status</a>
         <a href="https://github.com/adamgreenwell/wayfindr" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -45,9 +47,9 @@
         <div class="hero-copy">
           <h1 id="hero-title">One platform. For everyone.</h1>
           <p>
-            Wayfindr is open-source support software for live chat,
-            consent-based cobrowsing, and tickets. Use it, fork it, self-host
-            it, or get help running it.
+            Wayfindr is open-source support software for live chat, email,
+            consent-based cobrowsing, a help centre your visitors can search,
+            and tickets. Use it, fork it, self-host it, or get help running it.
           </p>
           <div class="hero-actions" aria-label="Wayfindr calls to action">
             <a class="button primary" href="#status">Project status</a>
@@ -148,6 +150,125 @@
         </div>
       </section>
 
+      <section class="features" id="features" aria-labelledby="features-title">
+        <div class="section-copy features-intro">
+          <h2 id="features-title">What it does, and what it does not do yet.</h2>
+          <p>
+            Wayfindr is developed in the open, which means the difference between
+            a feature you can install and a feature that exists on a branch is
+            public. It is marked here rather than blurred.
+          </p>
+          <ul class="feature-legend" aria-label="Status key">
+            <li><span class="chip shipped">Shipped</span> In a published release. Install it today.</li>
+            <li><span class="chip building">In development</span> On <code>main</code>, not in a release yet.</li>
+            <li><span class="chip planned">Planned</span> Intended, deliberately unscheduled.</li>
+            <li><span class="chip deferred">Deferred</span> Decided against for now, on the record.</li>
+          </ul>
+        </div>
+
+        <div class="feature-groups" aria-label="Wayfindr features by area">
+          <article>
+            <h3>Conversations</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Live chat through a script-tag widget, with visitor context and support codes</li>
+              <li><span class="chip shipped">Shipped</span> Email as a second channel, opening and continuing conversations</li>
+              <li><span class="chip shipped">Shipped</span> A help centre your visitors search from inside the widget</li>
+              <li><span class="chip shipped">Shipped</span> Support hours, an away state, and capture while you are closed</li>
+              <li><span class="chip shipped">Shipped</span> A pre-chat form with the fields you choose</li>
+              <li><span class="chip building">In development</span> Proactive messages, sent on rules rather than only in reply</li>
+              <li><span class="chip building">In development</span> Mailgun and Postmark pointed straight at inbound mail, with no proxy in front</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Cobrowsing</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Consent-based observe mode: requested clearly, scoped, and refusable</li>
+              <li><span class="chip shipped">Shipped</span> Masked fields and visible visitor control throughout the session</li>
+              <li><span class="chip shipped">Shipped</span> Sanitized page state, bounded diagnostics, and an inert replay preview</li>
+              <li><span class="chip planned">Planned</span> Incremental DOM patching in replay, gated on a decision accepting the security tradeoff</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Tickets and workflow</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Assignment, statuses, priorities, categories, labels, notes and replies</li>
+              <li><span class="chip shipped">Shipped</span> Two-way links to GitHub, GitLab and Jira, with comment relay</li>
+              <li><span class="chip building">In development</span> Service level policies with breach warnings</li>
+              <li><span class="chip building">In development</span> Automatic assignment and routing</li>
+              <li><span class="chip building">In development</span> Automation rules and macros over a typed lifecycle</li>
+              <li><span class="chip building">In development</span> Bulk actions, a command palette, and global keyboard shortcuts</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Visitors</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Visitor profiles, safe host context, and reference trails</li>
+              <li><span class="chip shipped">Shipped</span> A directory of every visitor the desk has heard from</li>
+              <li><span class="chip building">In development</span> A live board of who is on the site now &mdash; off by default, disclosed to the visitor, declinable, and pruned within thirty days at most</li>
+              <li><span class="chip building">In development</span> Typed custom attributes, private contact notes, identity merge and export</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Measurement and alerts</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Conversation and ticket volume, first response and resolution times, and who is carrying the queue</li>
+              <li><span class="chip shipped">Shipped</span> Satisfaction ratings, never reported over people who said nothing</li>
+              <li><span class="chip shipped">Shipped</span> Alert preferences, dashboard notifications and queued email digests</li>
+              <li><span class="chip building">In development</span> Background alerts, web push, quiet hours, and de-duplication across channels</li>
+              <li><span class="chip building">In development</span> A timezone per agent, so report day boundaries follow the reader</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Accounts and access</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Account roles, per-site access, and a separate platform-operator authority</li>
+              <li><span class="chip shipped">Shipped</span> Password recovery an agent can run without a production shell</li>
+              <li><span class="chip building">In development</span> Two-factor authentication with one-time recovery codes and an account-wide requirement</li>
+              <li><span class="chip building">In development</span> OpenID Connect single sign-on, custom roles, and role mapping that denies by default</li>
+              <li><span class="chip planned">Planned</span> SAML, held until somebody actually needs it</li>
+              <li><span class="chip planned">Planned</span> SCIM, which is a lifecycle decision rather than a login one</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>AI</h3>
+            <ul>
+              <li><span class="chip building">In development</span> An agent copilot: conversation summaries, reply drafts, suggested ticket details and knowledge snippets &mdash; every one a suggestion an agent edits or discards</li>
+              <li><span class="chip building">In development</span> Provider-neutral configuration, so an unset provider removes the feature instead of breaking the desk</li>
+              <li><span class="chip deferred">Deferred</span> An answer agent replying to your visitors unattended. The evaluation is done; the evidence was judged useful and insufficient</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Running it yourself</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> Docker and Compose self-hosting, with guided first-run setup</li>
+              <li><span class="chip shipped">Shipped</span> An operator console for mail, storage, scanning, backups, language and region</li>
+              <li><span class="chip shipped">Shipped</span> Backup, restore, and an optional offsite mirror</li>
+              <li><span class="chip shipped">Shipped</span> Release manifests that state what an upgrade needs before it migrates or serves</li>
+              <li><span class="chip shipped">Shipped</span> Break-glass support access: reasoned, time-bound, read-only, and audited</li>
+              <li><span class="chip shipped">Shipped</span> A read-only public API with a decided isolation model</li>
+              <li><span class="chip building">In development</span> Outbound webhooks and a narrow API write surface</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Languages</h3>
+            <ul>
+              <li><span class="chip shipped">Shipped</span> A widget that picks the visitor's language: your page first, then their browser, then your default</li>
+              <li><span class="chip shipped">Shipped</span> English and German in the widget; English, German and Italian for agents</li>
+              <li><span class="chip building">In development</span> The operator console and most of the remaining dashboard translated</li>
+              <li><span class="chip planned">Planned</span> A qualified speaker reading the German and Italian packs. The mechanical checks pass; that establishes nothing about whether a sentence is good German</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="releases" id="releases" aria-labelledby="releases-title">
         <div class="section-copy">
           <h2 id="releases-title">Every release says what it needs from you.</h2>
@@ -164,6 +285,30 @@
         </div>
 
         <ol class="release-list" aria-label="Wayfindr release timeline">
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.7.0" target="_blank" rel="noreferrer">0.7.0</a>
+              <time datetime="2026-08-25">25 August 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Reachable by email, and measurable at last</h3>
+              <p>
+                0.6.0 changed how Wayfindr looks; 0.7.0 changed what it can do.
+                A desk that could only be reached through the chat widget can
+                now be reached by email, answer questions before they are asked
+                from a help centre inside the widget, and say when nobody is
+                home. Reporting and satisfaction ratings arrived with it, so
+                there is finally a way to know whether any of it is working.
+              </p>
+              <p class="release-aside">
+                Also in the release: a pre-chat form, password recovery an agent
+                can run without a shell, per-site widget appearance, a widget
+                that speaks the visitor's language, a visitor directory, and a
+                read-only public API.
+              </p>
+            </div>
+          </li>
+
           <li>
             <div class="release-meta">
               <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.6.0" target="_blank" rel="noreferrer">0.6.0</a>
@@ -277,18 +422,108 @@
         </ol>
       </section>
 
+      <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-copy">
+          <h2 id="roadmap-title">The next release is readable before it exists.</h2>
+          <p>
+            Wayfindr is built in the open, so the work in flight can be read
+            today. None of it is installable yet: it is on <code>main</code>,
+            not in a release. It becomes real when it ships with a changelog
+            entry saying what it needs from you.
+          </p>
+          <p>
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/milestone/2" target="_blank" rel="noreferrer">
+              Track the 1.0.0 milestone
+            </a>
+          </p>
+        </div>
+
+        <div class="roadmap-tracks" aria-label="Wayfindr roadmap">
+          <article class="roadmap-track">
+            <span class="track-label">In development</span>
+            <h3>0.8.0 &mdash; not released yet</h3>
+            <p>
+              The eighth release is being prepared now, and it is the largest
+              development line the project has had: sign-in that fits an
+              organisation, a desk that carries some of the load, alerts that
+              know when to stay quiet, visitors as people rather than sessions,
+              an agent copilot, and most of the product speaking more than one
+              language. Every item marked <em>in development</em> above is part
+              of it.
+            </p>
+            <p>
+              It will say plainly whether an operator has work to do before it
+              is tagged, and it will not be tagged under a number that
+              understates what changed.
+            </p>
+          </article>
+
+          <article class="roadmap-track">
+            <span class="track-label">Next</span>
+            <h3>What 1.0.0 has to mean</h3>
+            <p>
+              1.0.0 is scoped to finishing the core support product and proving
+              it, not to feature parity with anybody. Most of that milestone is
+              closed: the gaps that separated Wayfindr from an established
+              support product, localization as a platform property, performance
+              baselines that were measured instead of assumed, and the security
+              work that stopped keeping the query strings visitors carry.
+            </p>
+            <p>
+              One item is still open, and it is the uncomfortable one.
+              <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/issues/797" target="_blank" rel="noreferrer">
+                Somebody who is not the author
+              </a>
+              has to install Wayfindr from a published artifact and have it
+              work.
+            </p>
+          </article>
+
+          <article class="roadmap-track deferred">
+            <span class="track-label">Deferred on purpose</span>
+            <h3>An AI that answers your visitors</h3>
+            <p>
+              The evaluation work is finished: a harness that runs without a
+              provider, a confidence and refusal policy, and a rerun against a
+              deployed model that passed every case with no unsafe answer. The
+              capability is still not being built.
+            </p>
+            <p>
+              One narrow, wholly synthetic run through one model route
+              establishes nothing about drift, adversarial or multilingual
+              coverage, stale knowledge, or how it fails on somebody else's
+              server. Until that evidence exists, the reply a customer reads
+              belongs to a human.
+              <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/issues/762" target="_blank" rel="noreferrer">
+                The decision is written down.
+              </a>
+            </p>
+          </article>
+
+          <p class="roadmap-later">
+            Further out, and deliberately unscheduled: single-page-app route
+            tracking, richer host-app SDKs for WordPress, Laravel, Next.js and
+            plain JavaScript, and broader automation surfaces. Parity work waits
+            for a real operator to need it.
+          </p>
+        </div>
+      </section>
+
       <section class="status" id="status" aria-labelledby="status-title">
         <div>
           <h2 id="status-title">Early, in the open, and genuinely installable.</h2>
           <p>
-            Wayfindr is young &mdash; six releases since August &mdash; but it is
-            not a demo. You can self-host it today, and the support loop it was
-            built around works end to end: install the widget, chat with a
-            visitor, request cobrowsing consent, and turn the session into a
-            ticket.
+            Wayfindr is young &mdash; seven releases since August, with an eighth
+            in preparation &mdash; but it is not a demo. You can self-host
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v0.7.0" target="_blank" rel="noreferrer">0.7.0</a>
+            today, and the support loop it was built around works end to end:
+            install the widget, chat with a visitor, request cobrowsing consent,
+            and turn the session into a ticket. Email, a searchable help centre,
+            support hours, and reporting are in that release too.
           </p>
           <p class="status-note">
-            Expect things to move. Nothing here is frozen yet.
+            Expect things to move. Nothing here is frozen yet, and the one thing
+            1.0.0 still waits on is a stranger installing it successfully.
           </p>
         </div>
         <div class="status-actions" aria-label="Wayfindr project links">
