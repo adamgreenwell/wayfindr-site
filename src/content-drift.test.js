@@ -66,8 +66,8 @@ test('the status copy counts the same releases the timeline lists', () => {
 
   assert.match(
     collapse(section('status')),
-    new RegExp(`\\b${CARDINALS[count]} releases since August\\b`),
-    `the timeline lists ${count} releases, so the status copy should say "${CARDINALS[count]} releases since August"`,
+    new RegExp(`\\b${CARDINALS[count]} release milestones since August\\b`),
+    `the timeline lists ${count} release milestones, so the status copy should say "${CARDINALS[count]} release milestones since August"`,
   );
 });
 
