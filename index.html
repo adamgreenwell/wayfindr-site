@@ -292,6 +292,36 @@
         <ol class="release-list" aria-label="Wayfindr release timeline">
           <li>
             <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.3.0" target="_blank" rel="noreferrer">1.3.0</a>
+              <time datetime="2026-10-10">10 October 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Docker 29 support, with a separate host helper upgrade</h3>
+              <p>
+                Optional host helper 0.5.0 verifies release images on Docker 29
+                with either the classic or containerd image store, including
+                the selected platform and image configuration. Enrolled hosts
+                can replace the published 0.4.0 helper through an explicit
+                upgrade that preserves enrollment and recovery state, with
+                explicit recovery if the helper replacement is interrupted.
+              </p>
+              <p class="release-aside">
+                No operator action required for the application; pull and
+                restart. This release adds no migrations. Application updates
+                preserve the installed host helper. Choosing helper 0.5.0
+                requires a separate, explicit root-only helper upgrade.
+                Optional managed updates require separate enrollment and remain
+                under disposable VM qualification, not yet qualified for
+                production use. Published 1.2.0 and 1.3.0 now provide a
+                compatible source and newer target for those qualification runs.
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.3.0/docs/self-hosting/managed-updater.md#upgrading-the-installed-helper" target="_blank" rel="noreferrer">Read the helper upgrade procedure.</a>
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.3.0/docs/self-hosting/managed-update-release-readiness.md" target="_blank" rel="noreferrer">Read the qualification boundary.</a>
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
               <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.2.0" target="_blank" rel="noreferrer">1.2.0</a>
               <time datetime="2026-10-09">9 October 2026</time>
             </div>
@@ -638,14 +668,15 @@
 
           <article class="roadmap-track">
             <span class="track-label">Next</span>
-            <h3>After 1.2.0 &mdash; qualify the managed update path</h3>
+            <h3>After 1.3.0 &mdash; qualify the managed update path</h3>
             <p>
-              1.2.0 publishes the first compatible source for the optional host
-              updater. Managed updates remain under disposable VM qualification,
-              not yet qualified for production use. The next gate is verified
-              enrollment and reboot behavior, then failure and recovery runs
-              between two compatible published releases with an independent
-              restore on a second VM.
+              Published 1.2.0 and 1.3.0 provide a compatible source and newer
+              target, with helper 0.5.0 available through a separate host
+              upgrade. Managed updates remain under disposable VM qualification,
+              not yet qualified for production use. The qualification work
+              covers enrollment, reboot behavior, application upgrades, failure
+              and recovery across supported platforms and image stores, and
+              independent restore on a second VM.
             </p>
             <p>
               Ordinary installations keep their existing update path. Optional
@@ -689,10 +720,10 @@
         <div>
           <h2 id="status-title">Past 1.0, in the open, and installable without its author.</h2>
           <p>
-            Wayfindr is young &mdash; fourteen release milestones since August,
-            with a fifteenth in preparation &mdash; but it is not a demo. You
+            Wayfindr is young &mdash; fifteen release milestones since August,
+            with a sixteenth in preparation &mdash; but it is not a demo. You
             can self-host
-            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.2.0" target="_blank" rel="noreferrer">1.2.0</a>
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.3.0" target="_blank" rel="noreferrer">1.3.0</a>
             today, and the support loop it was built around works end to end:
             install the widget, chat with a visitor, request cobrowsing consent,
             and turn the session into a ticket. Email, a searchable help centre,
@@ -700,9 +731,11 @@
             right to be forgotten are in that release too.
           </p>
           <p>
-            Release review and terminal upgrade hardening are available in
-            1.2.0. Optional managed updates remain under disposable VM
-            qualification, not yet qualified for production use; enrollment is
+            Release review and terminal upgrade hardening are available, and
+            1.3.0 publishes host helper 0.5.0 with Docker 29 support. Application
+            updates preserve the installed helper; replacing it is a separate,
+            explicit root-only upgrade. Optional managed updates remain under
+            disposable VM qualification, not yet qualified for production use; enrollment is
             not needed to keep using your existing update path.
           </p>
           <p class="status-note">
