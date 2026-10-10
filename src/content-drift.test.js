@@ -173,16 +173,16 @@ test('the legend documents exactly the states the feature list uses', () => {
   );
 });
 
-// 1.2.0 is the first compatible published source, not completed qualification
-// of a managed update between releases. Change this boundary only alongside
-// the recorded acceptance evidence, rather than promoting it with the release.
+// Publishing a compatible source, target and helper is not completed managed
+// update qualification. Change this boundary only alongside recorded acceptance
+// evidence, rather than promoting it with the release.
 test('optional managed updates keep an in-development feature state', () => {
   const managed = section('features').match(/<li id="managed-updates">[\s\S]*?<\/li>/);
   assert.ok(managed, 'expected the optional managed-update feature and its qualification boundary');
   assert.deepEqual(
     chips(managed[0]),
     [{ state: 'building', label: 'In development' }],
-    'publishing 1.2.0 must not promote unqualified managed updates to Shipped',
+    'publishing a release must not promote unqualified managed updates to Shipped',
   );
   assert.match(collapse(managed[0]), /Optional managed updates/);
 });
@@ -205,9 +205,11 @@ test('release, feature, roadmap and status copy retain the managed qualification
   assert.match(collapse(release[1]), /Optional managed updates require separate enrollment/);
   assert.match(
     collapse(release[1]),
-    /first compatible source release; managed source-to-target qualification needs a later compatible published release/,
-    'the first compatible source alone cannot establish a published source-to-target update',
+    /Published 1\.2\.0 and 1\.3\.0 now provide a compatible source and newer target for those qualification runs/,
+    'a published source and target enable qualification runs without establishing qualification',
   );
+  assert.match(collapse(release[1]), /Application updates preserve the installed host helper/);
+  assert.match(collapse(release[1]), /requires a separate, explicit root-only helper upgrade/);
 });
 
 test('the roadmap only points at in-development items while there are some', () => {
