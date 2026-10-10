@@ -173,6 +173,43 @@ test('the legend documents exactly the states the feature list uses', () => {
   );
 });
 
+// 1.2.0 is the first compatible published source, not completed qualification
+// of a managed update between releases. Change this boundary only alongside
+// the recorded acceptance evidence, rather than promoting it with the release.
+test('optional managed updates keep an in-development feature state', () => {
+  const managed = section('features').match(/<li id="managed-updates">[\s\S]*?<\/li>/);
+  assert.ok(managed, 'expected the optional managed-update feature and its qualification boundary');
+  assert.deepEqual(
+    chips(managed[0]),
+    [{ state: 'building', label: 'In development' }],
+    'publishing 1.2.0 must not promote unqualified managed updates to Shipped',
+  );
+  assert.match(collapse(managed[0]), /Optional managed updates/);
+});
+
+test('release, feature, roadmap and status copy retain the managed qualification limit', () => {
+  const release = section('releases').match(/<ol class="release-list"[^>]*>\s*(<li>[\s\S]*?<\/li>)/);
+  assert.ok(release, 'expected the newest release entry');
+  const managed = section('features').match(/<li id="managed-updates">[\s\S]*?<\/li>/);
+  assert.ok(managed, 'expected the optional managed-update feature');
+
+  for (const [name, content] of Object.entries({
+    release: release[1], feature: managed[0], roadmap: section('roadmap'), status: section('status'),
+  })) {
+    assert.match(
+      collapse(content),
+      /under disposable VM qualification, not yet qualified for production use/,
+      `${name} copy must distinguish published code from completed managed-update qualification`,
+    );
+  }
+  assert.match(collapse(release[1]), /Optional managed updates require separate enrollment/);
+  assert.match(
+    collapse(release[1]),
+    /first compatible source release; managed source-to-target qualification needs a later compatible published release/,
+    'the first compatible source alone cannot establish a published source-to-target update',
+  );
+});
+
 test('the roadmap only points at in-development items while there are some', () => {
   const roadmap = section('roadmap');
 
