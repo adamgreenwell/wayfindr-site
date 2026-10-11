@@ -205,11 +205,20 @@ test('release, feature, roadmap and status copy retain the managed qualification
   assert.match(collapse(release[1]), /Optional managed updates require separate enrollment/);
   assert.match(
     collapse(release[1]),
-    /Published 1\.2\.0 and 1\.3\.0 now provide a compatible source and newer target for those qualification runs/,
+    /Published 1\.2\.0 and 1\.4\.0 provide a compatible source and newer target for those qualification runs/,
     'a published source and target enable qualification runs without establishing qualification',
   );
   assert.match(collapse(release[1]), /Application updates preserve the installed host helper/);
   assert.match(collapse(release[1]), /requires a separate, explicit root-only helper upgrade/);
+});
+
+test('published helper replacement stays separate from managed application qualification', () => {
+  const helper = section('features').match(/<li id="helper-upgrades">[\s\S]*?<\/li>/);
+  assert.ok(helper, 'expected the separately published host helper feature');
+  assert.deepEqual(chips(helper[0]), [{ state: 'shipped', label: 'Shipped' }]);
+  assert.match(collapse(helper[0]), /Host helper 0\.6\.0/);
+  assert.match(collapse(helper[0]), /separate, explicit administrator upgrades from published 0\.4\.0 and 0\.5\.0 helpers/);
+
 });
 
 test('the roadmap only points at in-development items while there are some', () => {
