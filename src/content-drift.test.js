@@ -48,7 +48,7 @@ const ORDINALS = [
   'zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
   'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
   'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth',
-  'twentieth',
+  'twentieth', 'twenty-first',
 ];
 
 // The chip's colour carries no meaning to a screen reader, so its text is the
@@ -120,6 +120,8 @@ function compareVersions(left, right) {
   return 0;
 }
 
+// Multiple versions may be published on the same day. Versions must still
+// descend strictly, and an older version cannot carry a later date.
 test('the release timeline runs newest first', () => {
   const entries = releases();
 
@@ -132,8 +134,8 @@ test('the release timeline runs newest first', () => {
       `${older.version} is listed above ${newer.version}, so the timeline is out of order`,
     );
     assert.ok(
-      older.date < newer.date,
-      `${older.version} (${older.date}) is dated on or after ${newer.version} (${newer.date})`,
+      older.date <= newer.date,
+      `${older.version} (${older.date}) is dated after ${newer.version} (${newer.date})`,
     );
   }
 });
@@ -205,7 +207,7 @@ test('release, feature, roadmap and status copy retain the managed qualification
   assert.match(collapse(release[1]), /Optional managed updates require separate enrollment/);
   assert.match(
     collapse(release[1]),
-    /Published 1\.2\.0 and 1\.3\.0 now provide a compatible source and newer target for those qualification runs/,
+    /Published 1\.4\.3 and 1\.4\.4 provide a source and newer target for fresh qualification runs/,
     'a published source and target enable qualification runs without establishing qualification',
   );
   assert.match(collapse(release[1]), /Application updates preserve the installed host helper/);
@@ -235,4 +237,24 @@ test('every in-page link points at a section that exists', () => {
       `a link points at #${id}, which nothing on the page declares`,
     );
   }
+});
+
+// A helper correction may ship while complete managed updates remain unqualified.
+// Keep the administrative replacement and trust requirements visible together.
+test('the current helper release keeps its separate upgrade and verified-origin boundaries', () => {
+  const release = section('releases').match(/<ol class="release-list"[^>]*>\s*(<li>[\s\S]*?<\/li>)/);
+  assert.ok(release, 'expected the newest release entry');
+  const newest = collapse(release[1]);
+  assert.match(newest, /Host helper 0\.10\.0/);
+  assert.match(newest, /before taking maintenance ownership or stopping writers/);
+  assert.match(newest, /TLS and hostname verification stay enabled/);
+  assert.match(newest, /on an idle installation/);
+  assert.match(newest, /original distribution and transaction UUID/);
+
+  const helper = section('features').match(/<li id="helper-upgrades">[\s\S]*?<\/li>/);
+  assert.ok(helper, 'expected the separate helper upgrade feature');
+  assert.deepEqual(chips(helper[0]), [{ state: 'shipped', label: 'Shipped' }]);
+  assert.match(collapse(helper[0]), /Separate root-only host helper upgrades/);
+  assert.match(collapse(section('roadmap')), /No managed scenario is qualified yet/);
+  assert.match(collapse(section('status')), /1\.4\.4 publishes host helper 0\.10\.0/);
 });
