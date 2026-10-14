@@ -41,14 +41,14 @@ function chips(scope) {
 const CARDINALS = [
   'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
   'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
-  'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
+  'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty-one',
 ];
 
 const ORDINALS = [
   'zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
   'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
   'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth',
-  'twentieth', 'twenty-first',
+  'twentieth', 'twenty-first', 'twenty-second',
 ];
 
 // The chip's colour carries no meaning to a screen reader, so its text is the
@@ -207,7 +207,7 @@ test('release, feature, roadmap and status copy retain the managed qualification
   assert.match(collapse(release[1]), /Optional managed updates require separate enrollment/);
   assert.match(
     collapse(release[1]),
-    /Published 1\.4\.3 and 1\.4\.4 provide a source and newer target for fresh qualification runs/,
+    /Published 1\.4\.4 and 1\.4\.5 provide a source and newer target for fresh qualification runs/,
     'a published source and target enable qualification runs without establishing qualification',
   );
   assert.match(collapse(release[1]), /Application updates preserve the installed host helper/);
@@ -245,7 +245,9 @@ test('the current helper release keeps its separate upgrade and verified-origin 
   const release = section('releases').match(/<ol class="release-list"[^>]*>\s*(<li>[\s\S]*?<\/li>)/);
   assert.ok(release, 'expected the newest release entry');
   const newest = collapse(release[1]);
-  assert.match(newest, /Host helper 0\.10\.0/);
+  assert.match(newest, /Host helper 0\.11\.0/);
+  assert.match(newest, /existing Docker execs up to ten seconds to settle/);
+  assert.match(newest, /No command is exempted/);
   assert.match(newest, /before taking maintenance ownership or stopping writers/);
   assert.match(newest, /TLS and hostname verification stay enabled/);
   assert.match(newest, /on an idle installation/);
@@ -256,5 +258,5 @@ test('the current helper release keeps its separate upgrade and verified-origin 
   assert.deepEqual(chips(helper[0]), [{ state: 'shipped', label: 'Shipped' }]);
   assert.match(collapse(helper[0]), /Separate root-only host helper upgrades/);
   assert.match(collapse(section('roadmap')), /No managed scenario is qualified yet/);
-  assert.match(collapse(section('status')), /1\.4\.4 publishes host helper 0\.10\.0/);
+  assert.match(collapse(section('status')), /1\.4\.5 publishes host helper 0\.11\.0/);
 });
