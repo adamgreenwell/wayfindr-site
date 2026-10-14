@@ -293,6 +293,40 @@
         <ol class="release-list" aria-label="Wayfindr release timeline">
           <li>
             <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.5" target="_blank" rel="noreferrer">1.4.5</a>
+              <time datetime="2026-10-14">14 October 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Let transient Docker checks settle before protecting data</h3>
+              <p>
+                Host helper 0.11.0 gives existing Docker execs up to ten seconds
+                to settle before fencing writers. Transient health checks can
+                finish normally; persistent execs, malformed metadata, Docker
+                errors and hidden upgrade-window processes still refuse
+                protection. No command is exempted. Origin trust is checked
+                before taking maintenance ownership or stopping writers.
+                TLS and hostname verification stay enabled.
+              </p>
+              <p class="release-aside">
+                No operator action required for the application; pull and
+                restart. Application updates preserve the installed host helper.
+                Choosing helper 0.11.0 requires a separate, explicit root-only
+                helper upgrade on an idle installation. The helper CLI admits
+                the complete, unchanged published 0.10.0 bundle; interrupted
+                helper transactions must finish with their original distribution
+                and transaction UUID. Optional managed updates require separate
+                enrollment and remain under disposable VM qualification, not yet
+                qualified for production use. Published 1.4.4 and 1.4.5 provide
+                a source and newer target for fresh qualification runs.
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.4.5/docs/self-hosting/managed-updater.md#upgrading-the-installed-helper" target="_blank" rel="noreferrer">Read the helper upgrade procedure.</a>
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.4.5/docs/self-hosting/helper-0.11-candidate.md" target="_blank" rel="noreferrer">Read the helper 0.11 contract.</a>
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.4.5/docs/self-hosting/managed-update-release-readiness.md" target="_blank" rel="noreferrer">Read the qualification boundary.</a>
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
               <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.4" target="_blank" rel="noreferrer">1.4.4</a>
               <time datetime="2026-10-12">12 October 2026</time>
             </div>
@@ -806,10 +840,10 @@
 
           <article class="roadmap-track">
             <span class="track-label">Next</span>
-            <h3>After 1.4.4 &mdash; qualify the managed update path</h3>
+            <h3>After 1.4.5 &mdash; qualify the managed update path</h3>
             <p>
-              Published 1.4.3 and 1.4.4 provide a source and newer target, with
-              helper 0.10.0 available through a separate host upgrade. Origin
+              Published 1.4.4 and 1.4.5 provide a source and newer target, with
+              helper 0.11.0 available through a separate host upgrade. Origin
               trust is checked before maintenance ownership; the configured
               HTTPS origin must also be trusted by the host helper. Managed
               updates remain under disposable VM qualification, not yet
@@ -861,10 +895,10 @@
         <div>
           <h2 id="status-title">Past 1.0, in the open, and installable without its author.</h2>
           <p>
-            Wayfindr is young &mdash; twenty release milestones since August,
-            with a twenty-first in preparation &mdash; but it is not a demo. You
+            Wayfindr is young &mdash; twenty-one release milestones since August,
+            with a twenty-second in preparation &mdash; but it is not a demo. You
             can self-host
-            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.4" target="_blank" rel="noreferrer">1.4.4</a>
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.5" target="_blank" rel="noreferrer">1.4.5</a>
             today, and the support loop it was built around works end to end:
             install the widget, chat with a visitor, request cobrowsing consent,
             and turn the session into a ticket. Email, a searchable help centre,
@@ -873,8 +907,9 @@
           </p>
           <p>
             Release review and terminal upgrade hardening are available, and
-            1.4.4 publishes host helper 0.10.0 with origin verification before
-            maintenance ownership. Application updates preserve the installed
+            1.4.5 publishes host helper 0.11.0 with a bounded wait for existing
+            Docker execs and origin verification before maintenance ownership.
+            Application updates preserve the installed
             helper; replacing it is a separate, explicit root-only upgrade.
             Optional managed updates remain under disposable VM qualification,
             not yet qualified for production use; enrollment is not needed to
