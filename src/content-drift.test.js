@@ -42,6 +42,7 @@ const CARDINALS = [
   'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
   'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
   'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty-one',
+  'twenty-two', 'twenty-three',
 ];
 
 const ORDINALS = [
@@ -49,6 +50,7 @@ const ORDINALS = [
   'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
   'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth',
   'twentieth', 'twenty-first', 'twenty-second',
+  'twenty-third', 'twenty-fourth',
 ];
 
 // The chip's colour carries no meaning to a screen reader, so its text is the
@@ -241,17 +243,18 @@ test('every in-page link points at a section that exists', () => {
 
 // A helper correction may ship while complete managed updates remain unqualified.
 // Keep the administrative replacement and trust requirements visible together.
-test('the current helper release keeps its separate upgrade and verified-origin boundaries', () => {
-  const release = section('releases').match(/<ol class="release-list"[^>]*>\s*(<li>[\s\S]*?<\/li>)/);
-  assert.ok(release, 'expected the newest release entry');
-  const newest = collapse(release[1]);
-  assert.match(newest, /Host helper 0\.11\.0/);
-  assert.match(newest, /existing Docker execs up to ten seconds to settle/);
-  assert.match(newest, /No command is exempted/);
-  assert.match(newest, /before taking maintenance ownership or stopping writers/);
-  assert.match(newest, /TLS and hostname verification stay enabled/);
-  assert.match(newest, /on an idle installation/);
-  assert.match(newest, /original distribution and transaction UUID/);
+test('the published helper release keeps its separate upgrade and verified-origin boundaries', () => {
+  const release = [...section('releases').matchAll(/<li>[\s\S]*?<\/li>/g)]
+    .find(([entry]) => entry.includes('/releases/tag/v1.4.5"'));
+  assert.ok(release, 'expected the 1.4.5 entry that published helper 0.11.0');
+  const helperRelease = collapse(release[0]);
+  assert.match(helperRelease, /Host helper 0\.11\.0/);
+  assert.match(helperRelease, /existing Docker execs up to ten seconds to settle/);
+  assert.match(helperRelease, /No command is exempted/);
+  assert.match(helperRelease, /before taking maintenance ownership or stopping writers/);
+  assert.match(helperRelease, /TLS and hostname verification stay enabled/);
+  assert.match(helperRelease, /on an idle installation/);
+  assert.match(helperRelease, /original distribution and transaction UUID/);
 
   const helper = section('features').match(/<li id="helper-upgrades">[\s\S]*?<\/li>/);
   assert.ok(helper, 'expected the separate helper upgrade feature');
