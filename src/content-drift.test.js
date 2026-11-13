@@ -42,7 +42,7 @@ const CARDINALS = [
   'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
   'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
   'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty-one',
-  'twenty-two', 'twenty-three',
+  'twenty-two', 'twenty-three', 'twenty-four',
 ];
 
 const ORDINALS = [
@@ -50,7 +50,7 @@ const ORDINALS = [
   'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth',
   'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth',
   'twentieth', 'twenty-first', 'twenty-second',
-  'twenty-third', 'twenty-fourth',
+  'twenty-third', 'twenty-fourth', 'twenty-fifth',
 ];
 
 // The chip's colour carries no meaning to a screen reader, so its text is the
