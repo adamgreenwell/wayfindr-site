@@ -219,6 +219,7 @@
             <ul>
               <li><span class="chip shipped">Shipped</span> Conversation and ticket volume, first response and resolution times, and who is carrying the queue</li>
               <li><span class="chip shipped">Shipped</span> Satisfaction ratings, never reported over people who said nothing</li>
+              <li><span class="chip shipped">Shipped</span> Ratings that ask about the one agent who helped, and rating questions a site writes, versions and publishes itself</li>
               <li><span class="chip shipped">Shipped</span> Alert preferences, dashboard notifications and queued email digests</li>
               <li><span class="chip shipped">Shipped</span> Background alerts, web push, quiet hours, and de-duplication across channels</li>
               <li><span class="chip shipped">Shipped</span> A timezone per agent, so report day boundaries follow the reader</li>
@@ -242,6 +243,10 @@
             <ul>
               <li><span class="chip shipped">Shipped</span> An agent copilot: conversation summaries, reply drafts, suggested ticket details and knowledge snippets &mdash; every one a suggestion an agent edits or discards</li>
               <li><span class="chip shipped">Shipped</span> Provider-neutral configuration, so an unset provider removes the feature instead of breaking the desk</li>
+              <li><span class="chip shipped">Shipped</span> Account-owned AI connections, tested activation, model discovery and usage controls, with account and site policies for manual tools</li>
+              <li><span class="chip shipped">Shipped</span> Conversation Assist: one rail for catch-up, suggested replies and sources, opt-in automatic preparation, and private refinement of an agent's own draft &mdash; nothing reaches a visitor without an agent</li>
+              <li><span class="chip shipped">Shipped</span> Reply drafts grounded in your published articles, with citations an agent can inspect and an invalid citation withholding the draft</li>
+              <li><span class="chip shipped">Shipped</span> Assist feedback and a usage report, with optional retention limits</li>
               <li><span class="chip deferred">Deferred</span> An answer agent replying to your visitors unattended. The evaluation is done; the evidence was judged useful and insufficient</li>
             </ul>
           </article>
@@ -250,6 +255,7 @@
             <h3>Running it yourself</h3>
             <ul>
               <li><span class="chip shipped">Shipped</span> Docker and Compose self-hosting, with guided first-run setup</li>
+              <li><span class="chip shipped">Shipped</span> Optional headless owner bootstrap for fresh private installations, with a protected, expiring setup claim and explicit reconciliation of uncertain outcomes</li>
               <li><span class="chip shipped">Shipped</span> An operator console for mail, storage, scanning, backups, language and region</li>
               <li><span class="chip shipped">Shipped</span> Backup, restore, and an optional offsite mirror</li>
               <li><span class="chip shipped">Shipped</span> Release manifests that state what an upgrade needs before it migrates or serves</li>
@@ -291,6 +297,131 @@
         </div>
 
         <ol class="release-list" aria-label="Wayfindr release timeline">
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.7.0" target="_blank" rel="noreferrer">1.7.0</a>
+              <time datetime="2026-11-13">13 November 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Conversation Assist, and ratings that ask about the agent</h3>
+              <p>
+                Catch up, Suggested reply and Sources sit in a collapsible rail
+                beside the transcript. Each account and site chooses Off,
+                Manual or Prepare; with Prepare, opening a conversation prepares
+                suggestions in the background, but only where both approved the
+                current policy, so earlier choices start as Manual. Reply drafts
+                can cite passages from the account's published articles, and an
+                invalid citation withholds the whole draft. An agent can ask
+                Assist to clarify, shorten, change the tone of or translate
+                their own unsent draft. Assist never sends: an agent reviews
+                every insertion and sends it with the ordinary Send.
+              </p>
+              <p>
+                Ratings can ask how the one agent who helped did, separately
+                from the overall score, and a site can write, version and
+                publish its own rating questions in English, German and
+                Italian. Each published version is reported on its own. The
+                dashboard gains one contextual sidebar and a tighter type
+                scale.
+              </p>
+              <p class="release-aside">
+                No operator action required; pull and restart. Every migration
+                is additive and runs through the normal migration path. Forge
+                sites that deploy in place pick up the shared-storage fix after
+                re-pasting the deploy script; nothing breaks without it.
+                Application updates preserve the installed host helper.
+                Choosing helper 0.11.0 requires a separate, explicit root-only
+                helper upgrade on an idle installation. Optional managed
+                updates require separate enrollment and remain under disposable
+                VM qualification, not yet qualified for production use.
+                Published 1.4.4 and 1.4.5 provide a source and newer target for
+                fresh qualification runs; no managed scenario is qualified yet.
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.7.0/CHANGELOG.md" target="_blank" rel="noreferrer">Read the release notes.</a>
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.6.0" target="_blank" rel="noreferrer">1.6.0</a>
+              <time datetime="2026-10-16">16 October 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>Account AI controls and private password-reset links</h3>
+              <p>
+                Account administrators can test and activate their own AI
+                connection, discover models and review bounded usage. Account
+                and site policies govern availability, tasks and permitted
+                context; guarded requests recheck current authority and reserve
+                usage. Existing installation-level manual copilot settings
+                remain available. Every suggestion still belongs to an agent
+                to edit, use or discard.
+              </p>
+              <p>
+                New password-reset links carry their credentials in a browser
+                fragment, keeping them out of HTTP request URLs. The landing
+                clears the fragment and submits through the existing protected
+                reset flow. Expiry, single use and session revocation remain
+                in force. These new links require JavaScript; earlier links
+                and custom notification URL callbacks remain supported.
+              </p>
+              <p>
+                Shared work identities and cache classifications are a
+                foundation for later AI preparation. Automatic preparation,
+                the unified Assist rail, grounded answers and draft refinement
+                remain future work; opening a workspace does not generate them.
+              </p>
+              <p class="release-aside">
+                No operator action required; pull and restart. The seven
+                additive migrations run through the normal migration path.
+                Application updates preserve the installed host helper.
+                Choosing helper 0.11.0 requires a separate, explicit root-only
+                helper upgrade on an idle installation. Optional managed
+                updates require separate enrollment and remain under disposable
+                VM qualification, not yet qualified for production use.
+                Published 1.4.4 and 1.4.5 provide a source and newer target for
+                fresh qualification runs; no managed scenario is qualified yet.
+                The protected owner-bootstrap v1 claim is unchanged;
+                integrations must validate it before deriving a fragment link
+                for a compatible destination.
+                <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/blob/v1.6.0/CHANGELOG.md" target="_blank" rel="noreferrer">Read the release notes.</a>
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="release-meta">
+              <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.5.0" target="_blank" rel="noreferrer">1.5.0</a>
+              <time datetime="2026-10-15">15 October 2026</time>
+            </div>
+            <div class="release-body">
+              <h3>A protected owner setup path for fresh installations</h3>
+              <p>
+                An optional headless bootstrap creates a fresh account,
+                ordinary Owner and first site without granting platform
+                operator access. Its expiring, single-use setup claim goes
+                exclusively into a protected file. Exact committed retries
+                retain the original receipt; partial or uncertain outcomes
+                hold for operator reconciliation.
+              </p>
+              <p>
+                Read-only status separates the original completed receipt
+                from current owner and site bindings. Recognizing a completed
+                bootstrap after a legitimate ownership transfer does not
+                establish a completed password handoff or grant management
+                authority.
+              </p>
+              <p class="release-aside">
+                No operator action required; the new request table is additive.
+                Existing installations keep their normal bootstrap and
+                recovery behavior. Host helper 0.11.0 remains a separate
+                administrator upgrade. Managed updates and protective-archive
+                recovery remain unqualified, with no managed scenario
+                qualified yet.
+              </p>
+            </div>
+          </li>
+
           <li>
             <div class="release-meta">
               <a class="release-version" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.5" target="_blank" rel="noreferrer">1.4.5</a>
@@ -840,7 +971,7 @@
 
           <article class="roadmap-track">
             <span class="track-label">Next</span>
-            <h3>After 1.4.5 &mdash; qualify the managed update path</h3>
+            <h3>Qualify the managed update path</h3>
             <p>
               Published 1.4.4 and 1.4.5 provide a source and newer target, with
               helper 0.11.0 available through a separate host upgrade. Origin
@@ -858,6 +989,13 @@
               enrollment is separate from upgrading Wayfindr. Further product
               work stays demand-gated, and only a new major version can require
               more than pulling and restarting.
+            </p>
+            <p>
+              Conversation Assist shipped in 1.7.0: automatic preparation where
+              an account and site opt in, reply drafts grounded in published
+              articles and private draft refinement, all reviewed by an agent
+              before anything is sent. Real model quality and rollout remain
+              separate qualification.
             </p>
           </article>
 
@@ -895,15 +1033,23 @@
         <div>
           <h2 id="status-title">Past 1.0, in the open, and installable without its author.</h2>
           <p>
-            Wayfindr is young &mdash; twenty-one release milestones since August,
-            with a twenty-second in preparation &mdash; but it is not a demo. You
+            Wayfindr is young &mdash; twenty-four release milestones since August,
+            with a twenty-fifth in preparation &mdash; but it is not a demo. You
             can self-host
-            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.4.5" target="_blank" rel="noreferrer">1.4.5</a>
+            <a class="text-link" href="https://github.com/adamgreenwell/wayfindr/releases/tag/v1.7.0" target="_blank" rel="noreferrer">1.7.0</a>
             today, and the support loop it was built around works end to end:
             install the widget, chat with a visitor, request cobrowsing consent,
             and turn the session into a ticket. Email, a searchable help centre,
             support hours, routing, automation, reporting, and a contact's
             right to be forgotten are in that release too.
+          </p>
+          <p>
+            Conversation Assist puts catch-up, suggested replies grounded in
+            published articles and private draft refinement in one rail, with
+            automatic preparation only where an account and site opt in. An
+            agent reviews everything before it reaches a visitor. Fresh private
+            installations can use the optional protected owner-bootstrap path;
+            new password-reset links keep credentials out of request URLs.
           </p>
           <p>
             Release review and terminal upgrade hardening are available, and
